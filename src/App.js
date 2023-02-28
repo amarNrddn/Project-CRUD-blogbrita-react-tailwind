@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import CreateNew from "./components/CreateNews";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DetailNews from "./components/DetailNews";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="flex justify-center w-full">
+        <div className="w-[50%]">
+          <div className="">
+            <Navbar />
+            <div className="pt-4">
+              <Routes>
+                <Route path="/" element={<Home />}  />
+                <Route path="createnews" element={<CreateNew/>} />
+                <Route path="detailnews/:id" element={<DetailNews/>} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 
